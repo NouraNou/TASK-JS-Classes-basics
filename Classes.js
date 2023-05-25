@@ -1,9 +1,6 @@
 /** Question 1: (1000 Points ⭐️)
  * 1. write a class of `Person`, give it the following properties
- * - firstName: String
- * - lastName: String
- * - gender: String
- * - birthYear: Number
+ *TASK-JS-Classes-basics'
  *
  * 2. Add the constructor that initializes all properties
  *
@@ -21,7 +18,42 @@
  */
 class Person {
   // continue the code here
+  // firstName;
+  //// lastName;
+  //ginder;
+  //birthYear;
+  //currentYear;
+  //fullName;
+  //Age;
+  firstName;
+  grade = "";
+
+  constructor(firstName, lastName, ginder, birthYear) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.ginder = ginder;
+    this.birthYear = birthYear;
+  }
+
+  fullName() {
+    console.log(this.firstName + " " + this.lastName);
+  }
+
+  age(currentYear) {
+    let Age = currentYear - this.birthYear;
+
+    return Age;
+  }
+
+  //console.log (fullName);
+  //return Age;
 }
+
+member1 = new Person("Noura", "Alhamdan", "Female", 1986);
+console.log(member1.age(2023));
+member1.fullName();
+member2 = new Person("Sara", "Alhamdan", "Female", 2008);
+console.log(member2);
 
 /** (Question 2): (15000 Points)
  * 1. Write a class `Movie`, give it the following properties
@@ -46,7 +78,48 @@ class Person {
 
 class Movie {
   // continue the code here
+
+  rating = [];
+
+  constructor(title, duration, genre) {
+    this.title = title;
+    this.duration = duration;
+    this.genre = genre;
+  }
+
+  addRating = (rate) => {
+    if (rate > 0 && rate <= 10) {
+      this.rating.push(rate);
+    }
+  };
+
+  averageRating = () => {
+    let sum = 0;
+    this.rating.forEach((rate) => (sum += rate));
+    return sum / this.rating.length;
+    //foreach is a for loop
+  };
+  //       movie.filter (rating) => {
+  //         const sum = rating.reduce(add, 0);
+
+  // function add(accumulator, a) {
+  //   return accumulator + a;
+  // }
+
+  //       }
+
+  //     }
+
+  //    }
 }
+
+let movie1 = new Movie("coded", 120, "action");
+movie1.addRating(10);
+movie1.addRating(10);
+movie1.addRating(9);
+movie1.addRating(9);
+console.log(movie1.rating);
+console.log(movie1.averageRating());
 
 /** (Question 3): (1000 Points)
  * 1. Create a class `Actor` that inherits `Person`, and adds the following properties
@@ -58,3 +131,15 @@ class Movie {
  */
 
 // write the class here
+class Actor extends Person {
+  movies = [];
+
+  addMovie = (movie) => {
+    this.movies.push(movie);
+  };
+}
+
+let actor1 = new Actor();
+actor1.addMovie("SOUL");
+actor1.addMovie("sky");
+console.log(actor1.movies);
